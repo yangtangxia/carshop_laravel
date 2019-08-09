@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理——文章添加</title>
+    <script src="<?php echo ADMIN_PUC;?>/js/jquery.js" type="text/javascript"></script>
+    <include file='Common/style' />
+    <!--引入编辑器-->
+    <include file='Common/ueditor' />
+   
+</head>
+<body>
+<include file='Common/head' />
+<div class="container clearfix">
+    <include file='Common/left' />
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="__MODULE__/Index/index">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="__CONTROLLER__/index">文章管理</a><span class="crumb-step">&gt;</span><span>文章新增</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="__CONTROLLER__/add" method="post" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                            <tr>
+                                <th><i class="require-red">*</i>文章标题：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="title" size="50" value="" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>文章作者：</th>
+                                <td>
+                                    <input class="common-text required" id="author" name="author" size="50" value="" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>所属栏目：</th>
+                                <td>
+                                    <select name="cateid">
+                                    	<volist name='cates' id='v'>
+                                    		<option value="{$v.id}"><?php echo str_repeat('——',$v['level']);?>{$v.name}</option>
+                                    	</volist>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red"></i>缩略图：</th>
+                                <td><input name="pic" id="pic" type="file"></td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>关键字：</th>
+                                <td>
+                                    <input class="common-text required" id="keywords" name="keywords" size="50" value="" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red"></i>描述：</th>
+                                <td>
+                                    <textarea rows="5" cols="50" name="des" id="des"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red"></i>文章类型：</th>
+                                <td>
+                                   <div id="atype">
+                                    <input type="radio" name="atype" value="0" checked="checked"/>列表
+                                    <input type="radio" name="atype" value="1" />车型
+                                    <input type="radio" name="atype" value="2" />招聘
+                                   </div>
+                                </td>
+                            </tr>
+                            <tr class="btype">
+                                <th><i class="require-red"></i>列表附加字段：</th>
+                                <td>
+                                   	 暂无附加字段
+                                </td>
+                            </tr>
+                            <tr class="btype">
+                                <th><i class="require-red"></i>日租：</th>
+                                <td>
+                                   	<input class="common-text required" id="date_pic" name="date_pic" size="10" value="" type="text">元/天
+                                </td>
+                            </tr>
+                            <tr class="btype">
+                                <th><i class="require-red"></i>招聘人数：</th>
+                                <td>
+                                   	<input class="common-text required" id="rnum" name="rnum" size="10" value="" type="text">人
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>内容：</th>
+                                <td><textarea name="content" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10"></textarea></td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red"></i>是否推荐：</th>
+                                <td>
+                                    <input type="radio" name="rem" value="1" />是
+                                    <input type="radio" name="rem" value="0" checked="checked"/>否
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+</script>

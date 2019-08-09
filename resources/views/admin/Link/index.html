@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理——链接管理</title>
+    <script src="<?php echo ADMIN_PUC;?>/js/jquery.js"></script>
+    <include file='Common/style' />
+</head>
+<body>
+<include file='Common/head' />
+<div class="container clearfix">
+    <include file='Common/left' />
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="__MODULE__/Index/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">友情链接管理</span></div>
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="">
+                    <table class="search-tab">
+                        <tr>
+                            <th width="70">关键字:</th>
+                            <td><input class="common-text" placeholder="关键字" name="keywords" value="" id="" type="text"></td>
+                            <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-title">
+                    <div class="result-list">
+                        <a href="__MODULE__/Link/add"><input type="button" class="icon-font" value="新增链接" /></a>
+                        <input type="submit" class="icon-font" form="myform" formaction="__CONTROLLER__/dels" formmethod="post" onclick="return confirm('确定删除吗？')" value="批量删除" />
+                        <input type="submit" class="icon-font" form="myform" formaction="__CONTROLLER__/sortlink" formmethod="post" value="更新排序" />
+                        
+                    </div>
+                </div>
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>
+                            <th class="tc" width="5%"><input id="checks" name="checks" type="checkbox" /></th>
+                            <th>ID</th>
+                            <th>排序</th>
+                            <th>网站标题</th>
+                            <th>网站地址</th>
+                            <th>操作</th>
+                        </tr>
+                        <volist name='links' id='vo'>
+                        <tr>
+                            <td class="tc">
+                            	<input name="ids[]" class="checkall" value="{$vo.id}" type="checkbox" />
+                            </td>
+                            <td>{$vo.id}</td>
+                            <td>
+                                <input name="id" value="{$vo.id}" type="hidden"/>
+                                <input class="common-input sort-input" name="{$vo.id}" value="{$vo.sort}" type="text" />
+                            </td>
+                            <td>{$vo.title}</td>
+                            <td>{$vo.url}</td>
+                            <td>
+                                <a class="link-update" href="__CONTROLLER__/edit/id/{$vo.id}">修改</a>
+                                <a class="link-del" onclick="return confirm('确定删除吗？')" href="__CONTROLLER__/del/id/{$vo.id}">删除</a>
+                            </td>
+                        </tr>
+	                    </volist>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+	$("#checks").click(function(){
+		if($(this).attr("checked")){
+			$(".checkall").attr("checked","checked");
+		}else{
+			$(".checkall").removeAttr("checked");
+		}
+	});
+</script>

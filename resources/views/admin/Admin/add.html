@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理——管理员添加</title>
+    <include file='Common/style' />
+</head>
+<body>
+<include file='Common/head' />
+<div class="container clearfix">
+    <include file='Common/left' />
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="__MODULE__/Index/index">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="__CONTROLLER__/index">管理员管理</a><span class="crumb-step">&gt;</span><span>管理员新增</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="__CONTROLLER__/add" method="post">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                            <tr>
+                                <th><i class="require-red">*</i>用户名：</th>
+                                <td>
+                                    <input class="common-text required" id="username" name="username" size="50" value="" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>密码：</th>
+                                <td>
+                                    <input class="common-text required" id="password" name="password" size="50" value="" type="password">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>所属角色：</th>
+                                <td>
+                                    <select name="roleid">
+                                    	<volist name="roles" id='v'>
+                                    	<option value="{$v.id}">{$v.rolename}</option>
+                                    	</volist>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

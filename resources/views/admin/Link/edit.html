@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理——链接修改</title>
+    <include file='Common/style' />
+</head>
+<body>
+<include file='Common/head' />
+<div class="container clearfix">
+    <include file='Common/left' />
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="__MODULE__/Index/index">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="__CONTROLLER__/index">友情链接管理</a><span class="crumb-step">&gt;</span><span>链接修改</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="__CONTROLLER__/edit" method="post">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                            <tr>
+                                <th><i class="require-red">*</i>网站名称：</th>
+                                <td>
+                                	<input type="hidden" name="id" value="{$links.id}" />
+                                    <input class="common-text required" id="title" name="title" size="50" value="{$links.title}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>网站地址：</th>
+                                <td>
+                                    <input class="common-text required" id="url" name="url" size="50" value="{$links.url}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red"></i>描述：</th>
+                                <td>
+                                    <textarea rows="5" cols="50" name="des" id="des">{$links.des}</textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

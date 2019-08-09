@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理——角色修改</title>
+    <include file='Common/style' />
+</head>
+<body>
+<include file='Common/head' />
+<div class="container clearfix">
+    <include file='Common/left' />
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="__MODULE__/Index/index">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="__CONTROLLER__/index">角色管理</a><span class="crumb-step">&gt;</span><span>角色修改</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="__CONTROLLER__/edit" method="post">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                        	<input type="hidden" name="id" value="{$roles.id}" />
+                            <tr>
+                                <th><i class="require-red">*</i>角色名称：</th>
+                                <td>
+                                    <input class="common-text required" id="rolename" name="rolename" size="50" value="{$roles.rolename}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>角色权限：</th>
+                                <td>
+                                	<ul>
+                                	<?php foreach($pris as $k=>$v){
+                                		if(strpos(','.$roles['pri_id_list'].',',$v['id'])!==false){
+                                			$check="checked='checked'";
+                                		}else{
+                                			$check='';
+                                		}
+                                	?>	
+                                		<li level="<?php echo $v['level'];?>">
+                                		<label id="pri_id_list">
+                                		<input <?php echo $check;?> class="common-text required" id="pri_id_list" name="pri_id_list[]" size="10" value="<?php echo $v['id'];?>" type="checkbox">
+                                		<?php  echo str_repeat('——',$v['level']);
+                                				echo $v['pri_name'];
+                                		?>
+                                		</label>
+                                		</li>
+                                		<?php } ?>
+                                	</ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+	$(":checkbox").click(function(){
+		var cur_li=$(this).parent().parent();
+		var level=cur_li.attr("level");
+//		alert(level)
+		var cur_level=cur_li.attr('level');
+		var checked=$(this).attr('checked');
+		cur_li.prevAll('li').each(function(){
+			if($(this).attr('level') < cur_level && checked){
+				$(this).find(":checkbox").attr("checked","checked");
+				if($(this).attr("level")==0){
+					return false;
+				}
+			}
+		});
+		
+		if(!checked){
+			cur_li.nextAll('li').each(function(){
+				if($(this).attr('level')>level){
+					$(this).find(':checkbox').removeAttr('checked');
+				}else{
+					return false;
+				}
+			});
+		}
+	});
+</script>

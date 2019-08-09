@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理——留言信息</title>
+    <include file='Common/style' />
+   
+</head>
+<body>
+<include file='Common/head' />
+<div class="container clearfix">
+    <include file='Common/left' />
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="__MODULE__/Index/index">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="">留言管理</a>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+            <table width="70%" border="0" cellspacing="0" cellpadding="3" align="center" class="hr" style="background-color: #CECECE;"> 
+	            <tr>
+	            	<td height="40" colspan="4" align="center" class="bord"><h2>留言信息</h2></td>
+	            </tr>
+	            <tr>
+		            <td height="25" align="right"  class="bord">姓名：</td>
+		            <td height="25" align="left" class="bord">
+		            <input type="text" name="name" size="15" maxlength="30" readonly="readonly" value="{$lys.nickname}"/>
+		            </td>
+	            </tr>
+	            <tr>
+		            <td width="17%" height="25" align="right" class="bord">电子邮件：</td>
+		            <td width="42%" height="25" align="left" class="bord">
+		            	<input type="text" name="email" size="25" maxlength="35" value="{$lys.email}" readonly="readonly"/>
+		            </td>
+	            </tr>
+	            <tr>
+		            <td width="14%" height="25" align="right" class="bord">电话：</td>
+		            <td width="27%" height="25" align="left" class="bord">
+		            	<input type="text" name="mobile" size="20" maxlength="11" value="{$lys.mobile}" readonly="readonly"/>
+		            </td>
+	            </tr>
+	            <tr>
+		            <td width="14%" height="25" align="right" class="bord">留言内容：</td>
+		            <td height="25" colspan="3" align="left" class="bord">
+		            <textarea name="note" cols="90" rows="10" readonly="readonly">{$lys.content}</textarea>
+		            </td>
+	            </tr>
+	            <tr>
+		            <td align="left" class="bord" colspan="4" >
+		            	<input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+		            	<a class="btn btn6" href="__CONTROLLER__/del/id/{$jobres.id}">删除</a>
+		            </td>
+	            </tr>
+        	</table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

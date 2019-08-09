@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理——求职信息</title>
+    <include file='Common/style' />
+    <style>
+    	table tr td{
+    		width: 200;
+    	}
+    	input{
+    		width: 200px;
+    	}
+    </style>
+</head>
+<body>
+<include file='Common/head' />
+<div class="container clearfix">
+    <include file='Common/left' />
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="__MODULE__/Index/index">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="">求职管理</a>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+            <table width="70%" border="0" cellspacing="0" cellpadding="3" align="center" class="hr" style="background-color: #CECECE;"> 
+	            <tr>
+	            	<td height="40" colspan="4" align="center" class="bord"><h2>求职人员信息表</h2></td>
+	            </tr>
+	            <tr>
+		            <td height="25" align="right"  class="bord">应聘职位：</td>
+		            <td height="25" align="left" class="bord">
+		            <input type="text" name="position" readonly="readonly" value="{$jobres.position}" />
+		            </td>
+	            </tr>
+	            <tr>
+		            <td height="25" align="right"  class="bord">姓名：</td>
+		            <td height="25" align="left" class="bord">
+		            <input type="text" name="name" size="15" maxlength="30" readonly="readonly" value="{$jobres.name}"/>
+		            </td>
+		            <td height="25" align="right" class="bord">性别：</td>
+		            <td height="25" align="left" class="bord">
+		            <if condition="$jobres['sex'] eq '男'">
+		            	<input type="text" name="sex" value="{$jobres.sex}" readonly="readonly"/>
+		            <else/>
+		            	<input type="text" name="sex" value="{$jobres.sex}" readonly="readonly"/> 
+		            </if>
+		            </td>
+	            </tr>
+	            <tr>
+		            <td width="14%" height="25" align="right" class="bord">民族：</td>
+		            <td width="27%" height="25" align="left" class="bord">
+		            	<input type="nation" name="nation" value="{$jobres.nation}" readonly="readonly"/>
+		            </td>
+		            <td width="17%" height="25" align="right" class="bord">出生日期：</td>
+		            <td width="42%" height="25" align="left" class="bord">
+		            <input type="text" name="brith" size="15" value="{$jobres.brith}" readonly="readonly"/> 
+		            </td>
+	            </tr>
+	            <tr>
+		            <td width="14%" height="25" align="right" class="bord">籍贯：</td>
+		            <td width="27%" height="25" align="left" class="bord">
+		            	<input type="text" name="native_place" size="15" value="{$jobres.native_place}" readonly="readonly"/> 
+		           	</td>
+		            <td height="25" align="right" class="bord"><span class="STYLE2">现住址：</span></td>
+		            <td height="25" align="left" class="bord">
+		            	<input type="text" name="address" size="15" value="{$jobres.address}" readonly="readonly"/> 
+		            </td>
+	            </tr>
+	            <tr>
+		            <td width="14%" height="25" align="right" class="bord">学历：</td>
+		            <td height="25" align="left" class="bord">
+		            <input type="text" name="school" size="15" value="{$jobres.school}" readonly="readonly"/>
+		            </td>
+		            <td height="25" align="right" class="bord"><span class="STYLE2">外语语种及程度：</span></td>
+		            <td height="25" align="left" class="bord">
+		            <input type="text" name="english" size="18" maxlength="35" value="{$jobres.english}" readonly="readonly"/>
+		            </td>
+	            </tr>
+	            <tr>
+		            <td width="14%" height="25" align="right" class="bord">移动电话：</td>
+		            <td width="27%" height="25" align="left" class="bord">
+		            	<input type="text" name="mobile" size="20" maxlength="11" value="{$jobres.mobile}" readonly="readonly"/>
+		            </td>
+		            <td width="17%" height="25" align="right" class="bord">电子邮件：</td>
+		            <td width="42%" height="25" align="left" class="bord">
+		            	<input type="text" name="email" size="25" maxlength="35" value="{$jobres.email}" readonly="readonly"/>
+		            </td>
+	            </tr>
+	            <tr>
+		            <td height="25" align="right" class="bord">身份证号：</td>
+		            <td height="25" align="left" class="bord">
+		            	<input type="text" name="cardid"  value="{$jobres.cardid}" readonly="readonly"/>
+		            </td>
+		            <td width="14%" height="25" align="right" class="bord">可到职日期：</td>
+		            <td height="25"  align="left" class="bord">
+		            <input type="text" name="datego"  value="{$jobres.datego}" readonly="readonly"/>
+		            </td>
+	            </tr>
+	            <tr>
+		            <td width="14%" height="25" align="right" class="bord">备注：</td>
+		            <td height="25" colspan="3" align="left" class="bord">
+		            <textarea name="note" cols="90" rows="10" readonly="readonly">{$jobres.note}</textarea>
+		            </td>
+	            </tr>
+	            <tr>
+		            <td align="left" class="bord" colspan="4" >
+		            	<input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+		            	<a class="btn btn6" href="__CONTROLLER__/del/id/{$jobres.id}">删除</a>
+		            </td>
+	            </tr>
+        	</table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理——权限修改</title>
+    <include file='Common/style' />
+</head>
+<body>
+<include file='Common/head' />
+<div class="container clearfix">
+    <include file='Common/left' />
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="__MODULE__/Index/index">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="__CONTROLLER__/index">权限管理</a><span class="crumb-step">&gt;</span><span>权限新增</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="__CONTROLLER__/edit" method="post">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                        	<input type="hidden" name="id" value="{$pries.id}" />
+                        	<tr>
+                            	<th width="120"><i class="require-red">*</i>上级分类：</th>
+	                            <td>
+	                                <select name="parentid" id="parentid" class="required">
+	                                    <option value="0">顶级权限</option>
+	                                    <volist name='pris' id='v'>
+	                                    <option value="{$v.id}" <if condition="$v['id'] eq $pries['parentid']">selected="selected"</if><if condition="$v['id'] eq $pries['id']">style="display:none"</if>><?php echo str_repeat('——',$v['level']);?>{$v.pri_name}</option>
+	                                    </volist>
+	                                </select>
+	                            </td>
+                       		</tr>
+                            <tr>
+                                <th><i class="require-red">*</i>权限名称：</th>
+                                <td>
+                                    <input class="common-text required" id="pri_name" name="pri_name" size="50" value="{$pries.pri_name}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>模块名称：</th>
+                                <td>
+                                    <input class="common-text required" id="mname" name="mname" size="50" value="{$pries.mname}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>控制器名称：</th>
+                                <td>
+                                    <input class="common-text required" id="cname" name="cname" size="50" value="{$pries.cname}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>方法名称：</th>
+                                <td>
+                                    <input class="common-text required" id="aname" name="aname" size="50" value="{$pries.aname}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
